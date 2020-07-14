@@ -30,8 +30,7 @@ class K6 < Formula
   end
 
   test do
-    output = "Test finished"
-    assert_match output, shell_output("#{bin}/k6 run github.com/loadimpact/k6/samples/http_get.js 2>&1")
+    assert_match "whatever", shell_output("#{bin}/k6 run - 2>&1 <<< 'export default function() { console.log(`whatever`); }'")
     assert_match version.to_s, shell_output("#{bin}/k6 version")
   end
 end
