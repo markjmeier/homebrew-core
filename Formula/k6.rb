@@ -33,8 +33,9 @@ class K6 < Formula
     (testpath/"whatever.js").write <<~EOS
       export default function() {
         console.log("whatever");
-    }
+      }
     EOS
+
     assert_match "whatever", shell_output("#{bin}/k6 run whatever.js 2>&1")
     assert_match version.to_s, shell_output("#{bin}/k6 version")
   end
